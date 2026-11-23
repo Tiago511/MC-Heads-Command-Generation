@@ -76,6 +76,7 @@ try {
         $page = 1
         $maxPages = 20
         $rateLimitMs = 1500
+        $seenHeadIds = [System.Collections.Generic.HashSet[string]]::new()
 
         while ($page -le $maxPages) {
             $url = "https://minecraft-heads.com/api/heads/custom-heads?app_uuid=$AppUuid&category_id=$CategoryId&page=$page&value=true"
@@ -85,10 +86,22 @@ try {
                 break
             }
 
-            $allHeads += @($response.data)
+            $newItemsAdded = 0
+            foreach ($item in $response.data) {
+                $itemKey = if ($item.id) { "$($item.id)" } else { "$($item.n)|$($item.u)" }
+                if ($seenHeadIds.Add($itemKey)) {
+                    $allHeads += $item
+                    $newItemsAdded++
+                }
+            }
+
+            if ($newItemsAdded -eq 0) {
+                break
+            }
+
             Write-Host "Loaded page $page ($($allHeads.Count) heads fetched so far)..." -ForegroundColor DarkCyan
 
-            if ($response.meta.demo_mode -eq $true -or $response.data.Count -lt 100) {
+            if ($response.meta.demo_mode -eq $true -or $response.data.Count -lt 10000) {
                 break
             }
 
