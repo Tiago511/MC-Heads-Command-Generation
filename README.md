@@ -1,6 +1,6 @@
 # MC Heads Command Generator
 
-A lightweight PowerShell utility for Minecraft mapmakers and builders to batch-generate `/give` commands (Minecraft Java Edition 1.21.5+) for decorative custom heads using the **Minecraft-Heads.com API v2**.
+A lightweight PowerShell utility for Minecraft mapmakers and builders to batch-generate `/give` commands (Minecraft Java Edition 1.21.5+) for decorative custom heads using the **Minecraft-Heads.com API v2**. Featuring local 24h response caching, strict input validation, and pagination rate-limiting.
 
 ## Features
 - Connects directly to the official Minecraft-Heads API v2 (`/api/heads/custom-heads`)
