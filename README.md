@@ -19,5 +19,5 @@ A lightweight PowerShell utility for Minecraft mapmakers and builders to batch-g
 All custom head textures and metadata are provided by **Minecraft-Heads.com**.
 
 <a href="https://minecraft-heads.com" target="_blank">
-  <img src="./banner.png" alt="Minecraft-Heads.com">
+  <img src="./minecraft-heads.webp" alt="Minecraft-Heads.com">
 </a>
